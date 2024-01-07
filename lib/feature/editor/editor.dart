@@ -6,6 +6,7 @@ import 'package:text_editor/feature/editor/widgets/file_tab.dart';
 import 'package:text_editor/feature/editor/widgets/highlighted_line.dart';
 import 'package:text_editor/feature/editor/widgets/input_workspace.dart';
 import 'package:text_editor/feature/editor/widgets/line_number_widget.dart';
+import 'package:text_editor/feature/editor/widgets/welcome_page.dart';
 
 class Editor extends StatefulWidget {
   const Editor({super.key});
@@ -87,7 +88,9 @@ class _EditorState extends State<Editor> {
       listener: _fileContentListener,
       child: BlocBuilder<EditorBloc, EditorState>(
         builder: (context, state) {
-          if (!state.hasFile) return const SizedBox();
+          if (!state.hasFile) {
+            return const WelcomePage();
+          }
 
           return PlatformMenuBar(
             menus: <PlatformMenu>[

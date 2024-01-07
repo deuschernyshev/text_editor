@@ -36,10 +36,21 @@ class _ExplorerState extends State<Explorer> {
       body: BlocBuilder<ExplorerBloc, ExplorerState>(
         builder: (context, state) {
           if (!state.hasDir) {
-            return Center(
-              child: OutlinedButton(
-                onPressed: _openDirectory,
-                child: const Text('Open Directory'),
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(
+                    'You have not yet opened a folder.',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  const SizedBox(height: 8.0),
+                  OutlinedButton(
+                    onPressed: _openDirectory,
+                    child: const Text('Open Folder'),
+                  ),
+                ],
               ),
             );
           }

@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 class InputWorkspace extends StatelessWidget {
   final TextEditingController textController;
-  final ScrollController textFieldScrollController;
+  final ScrollController scrollController;
 
   const InputWorkspace({
     super.key,
     required this.textController,
-    required this.textFieldScrollController,
+    required this.scrollController,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: textController,
-      scrollController: textFieldScrollController,
+      scrollController: scrollController,
       scrollPhysics: const ClampingScrollPhysics(),
       expands: true,
       maxLines: null,

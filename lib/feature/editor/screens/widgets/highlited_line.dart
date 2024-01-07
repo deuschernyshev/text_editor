@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class HighlitedLine extends StatelessWidget {
-  final ScrollController lineNumbersScrollController;
+class HighlightedLine extends StatelessWidget {
+  final ScrollController scrollController;
   final int linesCount;
   final int currentLineNumber;
 
-  const HighlitedLine({
+  const HighlightedLine({
     super.key,
     required this.currentLineNumber,
-    required this.lineNumbersScrollController,
+    required this.scrollController,
     required this.linesCount,
   });
 
@@ -18,7 +18,7 @@ class HighlitedLine extends StatelessWidget {
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
       child: ListView.separated(
-        controller: lineNumbersScrollController,
+        controller: scrollController,
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
         itemCount: linesCount,

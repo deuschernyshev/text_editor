@@ -73,7 +73,7 @@ class _EditorState extends State<Editor> {
               ),
             ),
             child: LineNumberWidget(
-              lineNumbersScrollController: _lineNumbersScrollController,
+              scrollController: _lineNumbersScrollController,
               linesCount: _linesCount,
               currentLineNumber: _getCurrentLineNumber(),
             ),
@@ -82,14 +82,14 @@ class _EditorState extends State<Editor> {
             child: Stack(
               clipBehavior: Clip.antiAlias,
               children: <Widget>[
-                HighlitedLine(
-                  lineNumbersScrollController: _lineNumbersScrollController,
+                HighlightedLine(
+                  scrollController: _lineNumbersScrollController,
                   linesCount: _linesCount,
                   currentLineNumber: _getCurrentLineNumber(),
                 ),
                 InputWorkspace(
                   textController: _textController,
-                  textFieldScrollController: _textFieldScrollController,
+                  scrollController: _textFieldScrollController,
                 ),
               ],
             ),

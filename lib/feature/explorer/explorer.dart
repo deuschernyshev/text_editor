@@ -97,11 +97,11 @@ class _ExplorerState extends State<Explorer> {
   }
 
   void _openDirectory() {
-    _explorerBloc.add(ExplorerEvent.openDirectory());
+    _explorerBloc.add(const ExplorerEvent.openDirectory());
   }
 
   void _refreshCurrentDirectory() {
-    _explorerBloc.add(ExplorerEvent.refreshCurrentDirectory());
+    _explorerBloc.add(const ExplorerEvent.refreshCurrentDirectory());
   }
 
   void _openFile(FileSystemEntity file) {

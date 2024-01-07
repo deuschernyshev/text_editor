@@ -14,21 +14,28 @@ class FileTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: Container(
-        padding: const EdgeInsets.all(4.0),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Theme.of(context).primaryColor,
-              width: 2,
-            ),
+    return Container(
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width / 10,
+      ),
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Theme.of(context).primaryColor,
+            width: 2,
           ),
         ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(file.name),
-            const SizedBox(width: 8.0),
+            Text(
+              file.name,
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
+            const SizedBox(width: 10.0),
             MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(

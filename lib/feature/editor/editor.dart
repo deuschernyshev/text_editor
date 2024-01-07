@@ -27,10 +27,14 @@ class _EditorState extends State<Editor> {
   void initState() {
     super.initState();
 
-    _bloc = context.read<EditorBloc>();
+    _initBlocs();
 
     _lineCountListener();
     _scrollListener();
+  }
+
+  void _initBlocs() {
+    _bloc = context.read<EditorBloc>();
   }
 
   void _lineCountListener() {
@@ -85,50 +89,67 @@ class _EditorState extends State<Editor> {
         builder: (context, state) {
           if (!state.hasFile) return const SizedBox();
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              FileTab(
-                file: state.file!,
-                onClose: _closeFile,
-              ),
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      width: 50,
-                      padding: const EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          right: BorderSide(color: Colors.grey[300]!),
-                        ),
+          return PlatformMenuBar(
+            menus: <PlatformMenu>[
+              PlatformMenu(
+                label: 'File',
+                menus: <PlatformMenuItem>[
+                  PlatformMenuItemGroup(
+                    members: <PlatformMenuItem>[
+                      PlatformMenuItem(
+                        label: 'Save',
+                        onSelected: _saveFile,
                       ),
-                      child: LineNumberWidget(
-                        scrollController: _lineNumbersScrollController,
-                        linesCount: _linesCount,
-                        currentLineNumber: _getCurrentLineNumber(),
-                      ),
-                    ),
-                    Expanded(
-                      child: Stack(
-                        clipBehavior: Clip.antiAlias,
-                        children: <Widget>[
-                          HighlightedLine(
-                            scrollController: _lineNumbersScrollController,
-                            linesCount: _linesCount,
-                            currentLineNumber: _getCurrentLineNumber(),
-                          ),
-                          InputWorkspace(
-                            textController: _textController,
-                            scrollController: _textFieldScrollController,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                ],
               ),
             ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                FileTab(
+                  file: state.file!,
+                  onClose: _closeFile,
+                ),
+                Expanded(
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        width: 50,
+                        padding: const EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            right: BorderSide(color: Colors.grey[300]!),
+                          ),
+                        ),
+                        child: LineNumberWidget(
+                          scrollController: _lineNumbersScrollController,
+                          linesCount: _linesCount,
+                          currentLineNumber: _getCurrentLineNumber(),
+                        ),
+                      ),
+                      Expanded(
+                        child: Stack(
+                          clipBehavior: Clip.antiAlias,
+                          children: <Widget>[
+                            HighlightedLine(
+                              scrollController: _lineNumbersScrollController,
+                              linesCount: _linesCount,
+                              currentLineNumber: _getCurrentLineNumber(),
+                            ),
+                            InputWorkspace(
+                              textController: _textController,
+                              scrollController: _textFieldScrollController,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),
@@ -137,5 +158,11 @@ class _EditorState extends State<Editor> {
 
   void _closeFile() {
     _bloc.add(const EditorEvent.closeFile());
+  }
+
+  void _saveFile() {
+    final content = _textController.text;
+
+    _bloc.add(EditorEvent.saveFile(content: content));
   }
 }

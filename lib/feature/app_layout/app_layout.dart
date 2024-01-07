@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:text_editor/feature/app_layout/widgets/split_screen.dart';
-import 'package:text_editor/feature/editor/screens/editor_screen.dart';
+import 'package:text_editor/feature/editor/editor.dart';
 import 'package:text_editor/feature/explorer/explorer.dart';
 
 class AppLayout extends StatefulWidget {
@@ -19,7 +19,7 @@ class _AppLayoutState extends State<AppLayout> {
         splitterAxis: Axis.vertical,
         children: <Widget>[
           Explorer(),
-          EditorScreen(),
+          Editor(),
         ],
       ),
     );

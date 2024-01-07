@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class EditorScreen extends StatefulWidget {
-  const EditorScreen({super.key});
+class Editor extends StatefulWidget {
+  const Editor({super.key});
 
   @override
-  State<EditorScreen> createState() => _EditorScreenState();
+  State<Editor> createState() => _EditorState();
 }
 
-class _EditorScreenState extends State<EditorScreen> {
+class _EditorState extends State<Editor> {
   final _textController = TextEditingController();
   final _textFieldScrollController = ScrollController();
   final _lineNumbersScrollController = ScrollController();

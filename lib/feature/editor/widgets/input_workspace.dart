@@ -21,6 +21,7 @@ class InputWorkspace extends StatelessWidget {
       keyboardType: TextInputType.multiline,
       decoration: const InputDecoration(
         contentPadding: EdgeInsets.symmetric(vertical: 2),
+        border: InputBorder.none,
       ),
       style: const TextStyle(
         fontSize: 14,

@@ -1,6 +1,14 @@
 part of 'editor_bloc.dart';
 
 @immutable
-sealed class EditorState {}
+sealed class EditorState {
+  final FileSystemEntity? file;
 
-final class EditorInitial extends EditorState {}
+  const EditorState({this.file});
+
+  bool get hasFile => file != null;
+}
+
+final class EditorDataState extends EditorState {
+  const EditorDataState({super.file});
+}

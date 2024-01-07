@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class InputLine extends StatelessWidget {
+class InputWorkspace extends StatelessWidget {
   final TextEditingController textController;
   final ScrollController textFieldScrollController;
 
-  const InputLine({
+  const InputWorkspace({
     super.key,
     required this.textController,
     required this.textFieldScrollController,

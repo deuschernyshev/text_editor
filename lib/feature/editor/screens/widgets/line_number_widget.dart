@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart'; 
 
-class RowNumber extends StatelessWidget {
+class LineNumberWidget extends StatelessWidget {
   final ScrollController lineNumbersScrollController;
   final int linesCount;
   final int currentLineNumber;
 
-  const RowNumber({
+  const LineNumberWidget({
     super.key,
     required this.currentLineNumber,
     required this.lineNumbersScrollController,

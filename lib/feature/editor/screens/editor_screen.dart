@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:text_editor/feature/editor/screens/widgets/colored_line.dart';
-import 'package:text_editor/feature/editor/screens/widgets/input_line.dart';
-import 'package:text_editor/feature/editor/screens/widgets/row_number.dart';
+import 'package:text_editor/feature/editor/screens/widgets/highlited_line.dart';
+import 'package:text_editor/feature/editor/screens/widgets/input_workspace.dart';
+import 'package:text_editor/feature/editor/screens/widgets/line_number_widget.dart';
 
 class EditorScreen extends StatefulWidget {
   const EditorScreen({super.key});
@@ -72,7 +72,7 @@ class _EditorScreenState extends State<EditorScreen> {
                 right: BorderSide(color: Colors.grey[300]!),
               ),
             ),
-            child: RowNumber(
+            child: LineNumberWidget(
               lineNumbersScrollController: _lineNumbersScrollController,
               linesCount: _linesCount,
               currentLineNumber: _getCurrentLineNumber(),
@@ -82,12 +82,12 @@ class _EditorScreenState extends State<EditorScreen> {
             child: Stack(
               clipBehavior: Clip.antiAlias,
               children: <Widget>[
-                ColoredLine(
+                HighlitedLine(
                   lineNumbersScrollController: _lineNumbersScrollController,
                   linesCount: _linesCount,
                   currentLineNumber: _getCurrentLineNumber(),
                 ),
-                InputLine(
+                InputWorkspace(
                   textController: _textController,
                   textFieldScrollController: _textFieldScrollController,
                 ),

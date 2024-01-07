@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ColoredLine extends StatelessWidget {
+class HighlitedLine extends StatelessWidget {
   final ScrollController lineNumbersScrollController;
   final int linesCount;
   final int currentLineNumber;
 
-  const ColoredLine({
+  const HighlitedLine({
     super.key,
     required this.currentLineNumber,
     required this.lineNumbersScrollController,
